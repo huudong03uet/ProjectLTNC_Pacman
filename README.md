@@ -116,6 +116,8 @@
 
 - Liên kết với các đường link ngoài.
 
+- Đóng gói chương trình để có thể cài đặt, chơi được ở các máy tính thông thường.
+
 ### *Nguồn tham khảo:*
 - https://lazyfoo.net/tutorials/SDL/index.php (các hàm trong thư viện SDL2.0, ...)
 
