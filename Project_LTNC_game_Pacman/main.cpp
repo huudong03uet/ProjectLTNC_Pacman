@@ -73,6 +73,9 @@ int main(int argc, char* args[])
 				if (gEvent.key.keysym.sym == SDLK_n && SDL_GetModState() & KMOD_CTRL)
 				{
 					newGame = true;
+					mapNumber = 1;
+					pacman.setScore(0);
+					winGame = false;
 				}
 
 				stopAndResumeGame(&gEvent, timeGame, gameMusic, stopSound, newGame);

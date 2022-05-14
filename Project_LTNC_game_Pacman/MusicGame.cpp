@@ -21,8 +21,8 @@ MusicGame::~MusicGame()
 void MusicGame::loadMusic()
 {
 	music_background_ = Mix_LoadMUS("music/music_background.wav");
-
-
+	
+	
 	music_eat_dot_ = Mix_LoadWAV("music/music_eat_dot.wav");
 	music_eat_big_dot_ = Mix_LoadWAV("music/music_eat_big_dot.wav");
 	music_die_ = Mix_LoadWAV("music/music_die.wav");
