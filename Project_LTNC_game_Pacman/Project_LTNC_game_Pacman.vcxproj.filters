@@ -104,4 +104,12 @@
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="map04.dat">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="map05.dat">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

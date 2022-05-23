@@ -41,6 +41,11 @@ void TextObject::setColor(int red, int green, int blue)
 	text_color_.b = blue;
 }
 
+int TextObject::getWidth() const
+{
+	return width_;
+}
+
 void TextObject::setColor(int typeColor)
 {
 	switch (typeColor)
@@ -76,27 +81,6 @@ void TextObject::renderText(SDL_Renderer* renderer, int xPos, int yPos, SDL_Rect
 }
 
 
-int TextObject::getWidth() const
-{
-	return width_;
-}
-
-
-int TextObject::getHeight() const
-{
-	return height_;
-}
-
-void TextObject::setText(const string& textInput)
-{
-	string_val_ = textInput;
-}
-
-string TextObject::getText() const
-{
-	return string_val_;
-}
-
 void TextObject::free()
 {
 	if (texture_ != NULL)
@@ -105,3 +89,19 @@ void TextObject::free()
 		texture_ = NULL;
 	}
 }
+
+int TextObject::getHeight() const
+{
+	return height_;
+}
+
+string TextObject::getText() const
+{
+	return string_val_;
+}
+
+void TextObject::setText(const string& textInput)
+{
+	string_val_ = textInput;
+}
+

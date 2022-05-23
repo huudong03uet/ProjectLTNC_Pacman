@@ -1,5 +1,32 @@
 #include "RenderGame.h"
 
+void renderScoreText(const int& scoreGame, TTF_Font*& fontText, TextObject& moneyText, SDL_Renderer* renderer)
+{
+	moneyText.setText("SCORE:");
+	moneyText.loadFromRenderText(fontText, renderer);
+	moneyText.renderText(renderer, SCREEN_WIDTH - 195, 45);
+
+	string scoreRender = to_string(scoreGame);
+
+	moneyText.setText(scoreRender);
+	moneyText.loadFromRenderText(fontText, renderer);
+	moneyText.renderText(renderer, 995 - moneyText.getWidth() / 2, 90);
+}
+
+bool renderStopMusic(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* renderer, MouseButton& buttonStopMusic)
+{
+	if (!buttonStopMusic.handleEvent(event_, renderer))
+	{
+		return false;
+	}
+	smallLight.setRect(X_BUTTON_STOP_MUSIC_, Y_BUTTON_STOP_MUSIC_);
+	smallLight.render(renderer);
+	if (event_->type == SDL_MOUSEBUTTONDOWN)
+	{
+		return true;
+	}
+	return false;
+}
 
 void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQuitGame, int& numberDifficult)
 {
@@ -93,17 +120,18 @@ void renderSlectDifficulty(SDL_Renderer* renderer, SDL_Event* event_, bool& isQu
 	}
 }
 
-void renderScoreText(const int& scoreGame, TTF_Font*& fontText, TextObject& moneyText, SDL_Renderer* renderer)
+void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText, TextObject& livesText, SDL_Renderer* renderer, BaseObject& livesImage)
 {
-	moneyText.setText("SCORE:");
-	moneyText.loadFromRenderText(fontText, renderer);
-	moneyText.renderText(renderer, SCREEN_WIDTH - 195, 45);
+	livesText.setText("LIVES:");
+	livesText.loadFromRenderText(fontText, renderer);
+	livesText.renderText(renderer, SCREEN_WIDTH - 195, 315);
 
-	string scoreRender = to_string(scoreGame);
+	for (int i = 0; i < numberLives; i++)
+	{
+		livesImage.setRect(i * (TILE_SIZE * 1.5) + 930, 355);
+		livesImage.render(renderer);
+	}
 
-	moneyText.setText(scoreRender);
-	moneyText.loadFromRenderText(fontText, renderer);
-	moneyText.renderText(renderer, 995 - moneyText.getWidth() / 2, 90);
 }
 
 void renderTimeText(const int& gameTime, TTF_Font*& fontText, TextObject& timeText, SDL_Renderer* renderer)
@@ -119,48 +147,49 @@ void renderTimeText(const int& gameTime, TTF_Font*& fontText, TextObject& timeTe
 	timeText.renderText(renderer, 995 - timeText.getWidth() / 2, 220);
 }
 
-void renderPacmanLiveText(const int& numberLives, TTF_Font*& fontText, TextObject& livesText, SDL_Renderer* renderer, BaseObject& livesImage)
+void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background)
 {
-	livesText.setText("LIVES:");
-	livesText.loadFromRenderText(fontText, renderer);
-	livesText.renderText(renderer, SCREEN_WIDTH - 195, 315);
+	BaseObject imageBackGroundWinGame;
+	imageBackGroundWinGame.loadImage("image/backgroundWinGame.PNG", renderer);
 
-	for (int i = 0; i < numberLives; i++)
-	{
-		livesImage.setRect(i * (TILE_SIZE * 1.5) + 930, 355);
-		livesImage.render(renderer);
-	}
+	MouseButton buttonNextGame;
+	buttonNextGame.setPositionObject(X_BUTTON_NEXT_GAME_, Y_BUTTON_NEXT_GAME_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
 
-}
+	BaseObject smallLight;
+	smallLight.loadImage("image/small_light.png", renderer);
 
-bool renderStopMusic(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* renderer, MouseButton& buttonStopMusic)
-{
-	if (!buttonStopMusic.handleEvent(event_, renderer))
-	{
-		return false;
-	}
-	smallLight.setRect(X_BUTTON_STOP_MUSIC_, Y_BUTTON_STOP_MUSIC_);
-	smallLight.render(renderer);
-	if (event_->type == SDL_MOUSEBUTTONDOWN)
-	{
-		return true;
-	}
-	return false;
-}
+	SDL_Event event_;
 
-bool renderStopSound(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* renderer, MouseButton& buttonStopSound)
-{
-	if (!buttonStopSound.handleEvent(event_, renderer))
+	bool isQuit = false;
+
+	while (!isQuit)
 	{
-		return false;
+		SDL_RenderClear(renderer);
+		background->render(renderer);
+
+		imageBackGroundWinGame.setRect(150, 25);
+		imageBackGroundWinGame.render(renderer);
+
+
+		SDL_PollEvent(&event_);
+
+		if (event_.type == SDL_QUIT)
+		{
+			isQuit = true;
+			exit(6);
+		}
+		if (buttonNextGame.handleEvent(&event_, renderer))
+		{
+			smallLight.setRect(X_BUTTON_NEXT_GAME_, Y_BUTTON_NEXT_GAME_);
+			smallLight.render(renderer);
+			if (event_.type == SDL_MOUSEBUTTONDOWN)
+			{
+				isQuit = true;
+			}
+		}
+
+		SDL_RenderPresent(renderer);
 	}
-	smallLight.setRect(X_BUTTON_STOP_SOUND_, Y_BUTTON_STOP_SOUND_);
-	smallLight.render(renderer);
-	if (event_->type == SDL_MOUSEBUTTONDOWN)
-	{
-		return true;
-	}
-	return false;
 }
 
 void renderLineStop(SDL_Renderer* renderer, bool stopSound)
@@ -182,6 +211,21 @@ void renderLineStop(SDL_Renderer* renderer, bool stopSound)
 		SDL_RenderDrawLine(renderer, X1_LINE_STOP_SOUND_, Y1_LINE_STOP_SOUND_, X2_LINE_STOP_SOUND_, Y2_LINE_STOP_SOUND_);
 		SDL_RenderDrawLine(renderer, X1_LINE_STOP_SOUND_ + 1, Y1_LINE_STOP_SOUND_, X2_LINE_STOP_SOUND_ + 1, Y2_LINE_STOP_SOUND_);
 	}
+}
+
+bool renderStopSound(BaseObject& smallLight, SDL_Event* event_, SDL_Renderer* renderer, MouseButton& buttonStopSound)
+{
+	if (!buttonStopSound.handleEvent(event_, renderer))
+	{
+		return false;
+	}
+	smallLight.setRect(X_BUTTON_STOP_SOUND_, Y_BUTTON_STOP_SOUND_);
+	smallLight.render(renderer);
+	if (event_->type == SDL_MOUSEBUTTONDOWN)
+	{
+		return true;
+	}
+	return false;
 }
 
 void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText, TextObject& moneyText,
@@ -244,47 +288,3 @@ void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText, TextObject& 
 
 }
 
-void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background)
-{
-	BaseObject imageBackGroundWinGame;
-	imageBackGroundWinGame.loadImage("image/backgroundWinGame.PNG", renderer);
-
-	MouseButton buttonNextGame;
-	buttonNextGame.setPositionObject(X_BUTTON_NEXT_GAME_, Y_BUTTON_NEXT_GAME_, WIDTH_BUTTON_, HEIGHT_BUTTON_);
-
-	BaseObject smallLight;
-	smallLight.loadImage("image/small_light.png", renderer);
-
-	SDL_Event event_;
-
-	bool isQuit = false;
-
-	while (!isQuit)
-	{
-		SDL_RenderClear(renderer);
-		background->render(renderer);
-
-		imageBackGroundWinGame.setRect(150, 25);
-		imageBackGroundWinGame.render(renderer);
-
-
-		SDL_PollEvent(&event_);
-
-		if (event_.type == SDL_QUIT)
-		{
-			isQuit = true;
-			exit(6);
-		}
-		if (buttonNextGame.handleEvent(&event_, renderer))
-		{
-			smallLight.setRect(X_BUTTON_NEXT_GAME_, Y_BUTTON_NEXT_GAME_);
-			smallLight.render(renderer);
-			if (event_.type == SDL_MOUSEBUTTONDOWN)
-			{
-				isQuit = true;
-			}
-		}
-
-		SDL_RenderPresent(renderer);
-	}
-}

@@ -41,7 +41,7 @@ const int SIZE_TEXT_ = 28;
 
 const int NUMBER_LIVES_ = 3;
 
-const int MAX_NUMBER_MAP_ = 3;
+const int MAX_NUMBER_MAP_ = 5;
 
 #define START_PACMAN_X_ 13
 #define START_PACMAN_Y_ 4

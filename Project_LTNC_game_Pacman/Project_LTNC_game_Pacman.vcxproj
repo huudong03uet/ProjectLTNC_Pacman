@@ -175,6 +175,10 @@
     <None Include="map\map02.dat" />
     <None Include="map\map03.dat" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="map04.dat" />
+    <Text Include="map05.dat" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

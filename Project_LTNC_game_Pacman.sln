@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project_LTNC_game_Pacman", "Project_LTNC_game_Pacman\Project_LTNC_game_Pacman.vcxproj", "{708B3C3B-4768-4DDD-A0B2-98B7A72F56FB}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Pacman_21020760UET", "Pacman_21020760UET\Pacman_21020760UET.vdproj", "{C9662406-7925-4216-9103-A9FE0C44BC6F}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Pacman_21020760UET", "Pacman_21020760UET\Pacman_21020760UET.vdproj", "{C8AB4DA1-2F6E-4FE4-9C0B-9AC41B4659F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{708B3C3B-4768-4DDD-A0B2-98B7A72F56FB}.Release|x64.Build.0 = Release|x64
 		{708B3C3B-4768-4DDD-A0B2-98B7A72F56FB}.Release|x86.ActiveCfg = Release|Win32
 		{708B3C3B-4768-4DDD-A0B2-98B7A72F56FB}.Release|x86.Build.0 = Release|Win32
-		{C9662406-7925-4216-9103-A9FE0C44BC6F}.Debug|x64.ActiveCfg = Release
-		{C9662406-7925-4216-9103-A9FE0C44BC6F}.Debug|x86.ActiveCfg = Debug
-		{C9662406-7925-4216-9103-A9FE0C44BC6F}.Release|x64.ActiveCfg = Release
-		{C9662406-7925-4216-9103-A9FE0C44BC6F}.Release|x86.ActiveCfg = Release
+		{C8AB4DA1-2F6E-4FE4-9C0B-9AC41B4659F1}.Debug|x64.ActiveCfg = Release
+		{C8AB4DA1-2F6E-4FE4-9C0B-9AC41B4659F1}.Debug|x86.ActiveCfg = Debug
+		{C8AB4DA1-2F6E-4FE4-9C0B-9AC41B4659F1}.Release|x64.ActiveCfg = Release
+		{C8AB4DA1-2F6E-4FE4-9C0B-9AC41B4659F1}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

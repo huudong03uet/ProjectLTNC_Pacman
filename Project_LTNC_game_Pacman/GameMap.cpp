@@ -61,6 +61,7 @@ void GameMap::drawMap(SDL_Renderer* renderer)
 	}
 }
 
+
 int GameMap::getNumberItems() const
 {
 	return number_items_;

@@ -193,7 +193,7 @@ void stopAndResumeGame(SDL_Event* event_, Timer& timeGame, MusicGame& gameMusic,
 void loadImageAndSetPosition(BaseObject& gBackground, BaseObject& pacmanLivesImage, BaseObject& smallLight, SDL_Renderer* renderer,
 	MouseButton& buttonStopMusic, MouseButton& buttonStopSound, GameMap& gameMap, const int& mapNumber)
 {
-	gBackground.loadImage("image/background.png", renderer);
+	gBackground.loadImage("image/background" + to_string(mapNumber) + ".png", renderer);
 	pacmanLivesImage.loadImage("image/pacman_lives.png", renderer);
 	smallLight.loadImage("image/small_light64.png", renderer, &COLOR_KEY_WHITE_);
 

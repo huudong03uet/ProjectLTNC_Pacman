@@ -15,6 +15,10 @@ int main(int argc, char* args[])
 		int numberDie = 0;
 		int timeCurrent = 0;
 
+		
+		
+		
+		
 		MusicGame gameMusic;
 		gameMusic.loadMusic();
 		Mix_PlayMusic(gameMusic.getMusicBackground(), -1);
