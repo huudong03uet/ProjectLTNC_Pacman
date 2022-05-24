@@ -21,5 +21,6 @@ void renderLineStop(SDL_Renderer* renderer, bool stopSound);
 void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText, TextObject& moneyText,
 	SDL_Renderer* renderer, SDL_Event* events_);
 void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background);
-
+void renderImageRankScore(BaseObject& imageLossGame, vector<int> rankScore,
+	SDL_Event* event_, SDL_Renderer* renderer, TTF_Font*& fontText);
 #endif // !RENDER_GAME_H_

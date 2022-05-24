@@ -6,12 +6,13 @@
 #include <SDL_ttf.h>
 #include <SDL_mixer.h>
 
+
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
 #include <map>
-
+#include <algorithm>
 using namespace std;
 
 static SDL_Window* gWindow = NULL;

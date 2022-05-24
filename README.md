@@ -26,6 +26,8 @@
 
 - Càng về các màn sau, càng xuất hiện nhiều góc chết hơn, hãy khéo léo điều khiển ***Pacman*** của bạn 1 cách thông minh nhất có thể.
 
+- Thời gian trong game cũng tương đối ngắn, hãy để ý và không để lãng phí 1 chút thời gian nào.
+
 - Độ khó của game cũng được phân chia thành 4 mức độ:
   - Mức 1 (Easy): Với mức độ chơi này, tất cả các con ***Pac pac*** đều di chuyển 1 cách ngẫu nhiên, không có quy luật nào.
 
@@ -60,7 +62,7 @@
 
 ![](Project_LTNC_game_Pacman/image/backgroundLostGame.PNG)
 
-
+![](Project_LTNC_game_Pacman/image/rankScoreDemo.PNG)
 
 ## **Setup**
 
@@ -106,15 +108,25 @@
 
 - Tìm hiểu lập trình hướng đối tượng.
 
+- Kĩ thuật đọc ghi file.
+
+- Kĩ thuật chia file header và file source.
+
 - Kĩ thuật tile map, fps ...
 
 - Tạo các đối tượng: nhân vật với tính năng như xử lí sự kiện, va chạm, ...
 
 - Tạo các đối tượng phụ: thời gian, điểm, sinh mạng,...
 
+- Tạo âm thanh, effect,... (có thể bật hoặc tắt bất cứ lúc nào).
+
 - Tạo các menu: Bắt đầu, kết thúc, cài đặt, chơi lại, hướng dẫn,...
 
 - Liên kết với các đường link ngoài.
+
+- Lưu lại điểm số (kể cả chương trình có bị đóng lại).
+
+- Tạo bảng xếp hạng.
 
 - Đóng gói chương trình để có thể cài đặt, chơi được ở các máy tính thông thường.
 

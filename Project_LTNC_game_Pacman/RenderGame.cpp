@@ -192,6 +192,7 @@ void renderImageWinGame(SDL_Renderer* renderer, BaseObject* background)
 	}
 }
 
+
 void renderLineStop(SDL_Renderer* renderer, bool stopSound)
 {
 	if (Mix_PausedMusic() == true)
@@ -279,7 +280,20 @@ void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText, TextObject& 
 			smallLight.render(renderer);
 			if (event_->type == SDL_MOUSEBUTTONDOWN)
 			{
-				SDL_OpenURL("https:///gamevui.vn/account/login?returnurl=https://gamevui.vn/games/services/score.htm");
+				ofstream outFile("map/rankScore.txt", ios::app);
+				outFile << scoreGame << endl;
+				ifstream inFile("map/rankScore.txt");
+				vector<int> v;
+				while (!inFile.eof())
+				{
+					int tmp;
+					if (inFile >> tmp)
+					{
+						v.push_back(tmp);
+					}
+				}
+				sort(v.rbegin(), v.rend());
+				renderImageRankScore(imageBackGroundLostGame, v, event_, renderer, fontText);
 			}
 		}
 
@@ -288,3 +302,47 @@ void renderImageLossGame(const int& scoreGame, TTF_Font*& fontText, TextObject& 
 
 }
 
+void renderImageRankScore( BaseObject& imageLossGame, vector<int> rankScore, SDL_Event* event_, SDL_Renderer* renderer, TTF_Font*& fontText)
+{
+	BaseObject imageRankScore;
+	imageRankScore.loadImage("image/rankGame.png", renderer);
+
+	BaseObject smallLight;
+	smallLight.loadImage("image/small_light.png", renderer, &COLOR_KEY_BLACK_);
+
+	MouseButton buttonReturnRank;
+	buttonReturnRank.setPositionObject(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80, WIDTH_BUTTON_, HEIGHT_BUTTON_);
+
+	TextObject scoreText;
+	scoreText.setColor(WHITE_);
+	bool inRank = true;
+	
+	while (inRank)
+	{
+		SDL_RenderClear(renderer);
+		SDL_PollEvent(event_);
+		if (event_->type == SDL_QUIT)
+		{
+			exit(2);
+		}
+
+		imageLossGame.render(renderer);
+		imageRankScore.render(renderer);
+		for (int i = 0; i < 5 && i < rankScore.size(); i++)
+		{
+			scoreText.setText(to_string(i + 1) + ".   " + to_string(rankScore[i]));
+			scoreText.loadFromRenderText(fontText, renderer);
+			scoreText.renderText(renderer, 430, 180 + i * 50);
+		}
+		if (buttonReturnRank.handleEvent(event_, renderer))
+		{
+			smallLight.setRect(X_BUTTON_DIFFERENT_GAME_ - 330, Y_BUTTON_DIFFERENT_GAME_ - 80);
+			smallLight.render(renderer);
+			if (event_->type == SDL_MOUSEBUTTONDOWN)
+			{
+				inRank = false;
+			}
+		}
+		SDL_RenderPresent(renderer);
+	}
+}
