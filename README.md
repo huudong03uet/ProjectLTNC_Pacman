@@ -4,6 +4,7 @@
 
 + Mã sinh viên:  21020760 - Nguyễn Hữu Đồng - K66CB - UET
 
++ Video demo: https://www.youtube.com/watch?v=O2MJ70ml4O4
 ## **Description**
 
 
@@ -129,6 +130,27 @@
 - Tạo bảng xếp hạng.
 
 - Đóng gói chương trình để có thể cài đặt, chơi được ở các máy tính thông thường.
+
+### *Kết luận, điều tâm đắc*
+
+- Làm quen với lập trình hướng đối tượng.
+
+- Có thêm kĩ năng tìm hiểu thông tin và cập nhật kiến thức mới.
+
+- Có kiến thức về lập trình hướng đối tượng.
+
+- Sáng tạo thuật toán để game có điểm riêng hơn so với các game tương tự.
+
+### *Hướng phát triển*
+
+- Làm game online đưa lên cho tất cả mọi người cùng chơi và sắp xếp điểm cho mọi người.
+
+- Sử dụng thêm nhiều thuật toán cho nhân vật di chuyển đa dạng hơn.
+
+- Trau chuốt hơn về âm thanh, hình ảnh.
+
+- Code rõ ràng, gọn gàng, đúng cấu trúc hơn.
+
 
 ### *Nguồn tham khảo:*
 - https://lazyfoo.net/tutorials/SDL/index.php (các hàm trong thư viện SDL2.0, ...)
